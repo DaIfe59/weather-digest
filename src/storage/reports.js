@@ -14,6 +14,20 @@ function getReportPath(city, date) {
   );
 }
 
+function isValidCachedReport(report, date) {
+  return (
+    report &&
+    typeof report === "object" &&
+    report.date === date &&
+    typeof report.city === "string" &&
+    typeof report.country === "string" &&
+    report.coordinates &&
+    typeof report.coordinates.latitude === "number" &&
+    typeof report.coordinates.longitude === "number" &&
+    Array.isArray(report.forecast)
+  );
+}
+
 export async function saveReport(city, report) {
   await mkdir(config.reportsDir, { recursive: true });
 
@@ -33,8 +47,13 @@ export async function loadCachedReport(city, date) {
 
   try {
     const content = await readFile(filePath, "utf8");
+    const report = JSON.parse(content);
 
-    return JSON.parse(content);
+    if (!isValidCachedReport(report, date)) {
+      return null;
+    }
+
+    return report;
   } catch (error) {
     if (error.code === "ENOENT") {
       return null;
