@@ -1,0 +1,393 @@
+{
+  "info": {
+    "_postman_id": "e5a50004-6ade-4494-b2b8-7aa128cf8220",
+    "name": "Weather Digest API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58177252",
+    "_collection_link": "https://go.postman.co/collection/58177252-e5a50004-6ade-4494-b2b8-7aa128cf8220?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Geocoding",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://geocoding-api.open-meteo.com/v1/search?name=Москва&count=1&language=ru&format=json",
+          "protocol": "https",
+          "host": [
+            "geocoding-api",
+            "open-meteo",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Москва",
+              "type": "text"
+            },
+            {
+              "key": "count",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "language",
+              "value": "ru",
+              "type": "text"
+            },
+            {
+              "key": "format",
+              "value": "json",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 - City found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://geocoding-api.open-meteo.com/v1/search?name=Москва&count=1&language=ru&format=json",
+              "protocol": "https",
+              "host": [
+                "geocoding-api",
+                "open-meteo",
+                "com"
+              ],
+              "path": [
+                "v1",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Москва"
+                },
+                {
+                  "key": "count",
+                  "value": "1"
+                },
+                {
+                  "key": "language",
+                  "value": "ru"
+                },
+                {
+                  "key": "format",
+                  "value": "json"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 12 Sep 2026 15:31:56 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "239"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "X-Encoding-Time",
+              "value": "0.002682209014892578 ms"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "deflate"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"results\": [\n        {\n            \"id\": 524901,\n            \"name\": \"Москва\",\n            \"latitude\": 55.75204,\n            \"longitude\": 37.61781,\n            \"elevation\": 155,\n            \"feature_code\": \"PPLC\",\n            \"country_code\": \"RU\",\n            \"admin1_id\": 524894,\n            \"timezone\": \"Europe/Moscow\",\n            \"population\": 10381222,\n            \"country_id\": 2017370,\n            \"country\": \"Россия\",\n            \"admin1\": \"Москва\"\n        }\n    ],\n    \"generationtime_ms\": 1.3157129\n}"
+        },
+        {
+          "name": "200 - City not found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://geocoding-api.open-meteo.com/v1/search?name=НесуществующийГород123456&count=1&language=ru&format=json",
+              "protocol": "https",
+              "host": [
+                "geocoding-api",
+                "open-meteo",
+                "com"
+              ],
+              "path": [
+                "v1",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "НесуществующийГород123456"
+                },
+                {
+                  "key": "count",
+                  "value": "1"
+                },
+                {
+                  "key": "language",
+                  "value": "ru"
+                },
+                {
+                  "key": "format",
+                  "value": "json"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 12 Sep 2026 15:40:03 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "38"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "X-Encoding-Time",
+              "value": "0.003981590270996094 ms"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "deflate"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"generationtime_ms\": 1.188159\n}"
+        }
+      ]
+    },
+    {
+      "name": "Forecast",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.open-meteo.com/v1/forecast?latitude=55.75204&longitude=37.61781&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&forecast_days=3&timezone=auto&temperature_unit=celsius",
+          "protocol": "https",
+          "host": [
+            "api",
+            "open-meteo",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "forecast"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "55.75204"
+            },
+            {
+              "key": "longitude",
+              "value": "37.61781"
+            },
+            {
+              "key": "daily",
+              "value": "temperature_2m_max,temperature_2m_min,precipitation_sum"
+            },
+            {
+              "key": "forecast_days",
+              "value": "3"
+            },
+            {
+              "key": "timezone",
+              "value": "auto"
+            },
+            {
+              "key": "temperature_unit",
+              "value": "celsius"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 - Forecast success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.open-meteo.com/v1/forecast?latitude=55.75204&longitude=37.61781&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&forecast_days=3&timezone=auto&temperature_unit=celsius",
+              "protocol": "https",
+              "host": [
+                "api",
+                "open-meteo",
+                "com"
+              ],
+              "path": [
+                "v1",
+                "forecast"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "55.75204",
+                  "type": "text"
+                },
+                {
+                  "key": "longitude",
+                  "value": "37.61781",
+                  "type": "text"
+                },
+                {
+                  "key": "daily",
+                  "value": "temperature_2m_max,temperature_2m_min,precipitation_sum",
+                  "type": "text"
+                },
+                {
+                  "key": "forecast_days",
+                  "value": "3",
+                  "type": "text"
+                },
+                {
+                  "key": "timezone",
+                  "value": "auto",
+                  "type": "text"
+                },
+                {
+                  "key": "temperature_unit",
+                  "value": "celsius",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 12 Sep 2026 15:46:19 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "deflate"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"latitude\": 55.75,\n    \"longitude\": 37.625,\n    \"generationtime_ms\": 0.048279762268066406,\n    \"utc_offset_seconds\": 10800,\n    \"timezone\": \"Europe/Moscow\",\n    \"timezone_abbreviation\": \"GMT+3\",\n    \"elevation\": 151,\n    \"daily_units\": {\n        \"time\": \"iso8601\",\n        \"temperature_2m_max\": \"°C\",\n        \"temperature_2m_min\": \"°C\",\n        \"precipitation_sum\": \"mm\"\n    },\n    \"daily\": {\n        \"time\": [\n            \"2026-09-12\",\n            \"2026-09-13\",\n            \"2026-09-14\"\n        ],\n        \"temperature_2m_max\": [\n            17.1,\n            16.6,\n            18.4\n        ],\n        \"temperature_2m_min\": [\n            9.6,\n            8.7,\n            9.5\n        ],\n        \"precipitation_sum\": [\n            0,\n            0,\n            0\n        ]\n    }\n}"
+        },
+        {
+          "name": "400 - Invalid parameters",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.open-meteo.com/v1/forecast?latitude=invalid&longitude=37.61781&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&forecast_days=3&timezone=auto&temperature_unit=celsius",
+              "protocol": "https",
+              "host": [
+                "api",
+                "open-meteo",
+                "com"
+              ],
+              "path": [
+                "v1",
+                "forecast"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "invalid"
+                },
+                {
+                  "key": "longitude",
+                  "value": "37.61781"
+                },
+                {
+                  "key": "daily",
+                  "value": "temperature_2m_max,temperature_2m_min,precipitation_sum"
+                },
+                {
+                  "key": "forecast_days",
+                  "value": "3"
+                },
+                {
+                  "key": "timezone",
+                  "value": "auto"
+                },
+                {
+                  "key": "temperature_unit",
+                  "value": "celsius"
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 12 Sep 2026 15:50:07 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "88"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "deflate"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"error\": true,\n    \"reason\": \"Invalid value: Cannot initialize Float from invalid String value invalid\"\n}"
+        }
+      ]
+    }
+  ]
+}

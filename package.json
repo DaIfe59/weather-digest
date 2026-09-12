@@ -1,0 +1,17 @@
+{
+  "name": "weather-digest",
+  "version": "1.0.0",
+  "description": "Консольная утилита для получения прогноза погоды через Open-Meteo API",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env src/index.js"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "weather",
+    "rest-api"
+  ],
+  "author": "",
+  "license": "ISC"
+}
